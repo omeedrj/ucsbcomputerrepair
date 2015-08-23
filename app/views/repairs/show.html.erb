@@ -1,0 +1,46 @@
+<h3>Repair Id: <%= @repair.id %></h3>
+<p>
+	<%= link_to 'Update Repair Info', edit_repair_path(@repair) %>
+</p>
+<h4>Customer</h4>
+<p>
+	<table>
+		<tr>
+			<td><b>Name</b></td>
+			<td><b>Perm</b></td>
+			<td><b>Email</b></td>
+			<td><b>Phone #</b></td>
+		</tr>
+		<tr>
+			<td><%= @repair.customer_first_name %> <%= @repair.customer_last_name %></td>
+			<td><%= @repair.customer_id_number %></td>
+			<td><%= @repair.customer_email %></td>
+			<td><%= @repair.customer_phone_number %></td>
+		</tr>
+	</table>
+</p>
+
+
+<p>
+	<b>Device</b>
+	<br>Description: <%= @repair.device_description %>
+	<br>Password: <%= @repair.device_password %>
+	<br>Serial #: <%= @repair.device_serial_number %>
+	<br>Accessories: <%= @repair.accessories_description %>
+	<br>Problem: <%= @repair.device_problem_description %>
+</p>
+
+<hr>
+
+<h4>Repair Description</h4>
+<p> <%= @repair.repair_description %> </p>
+
+<p>
+	<b>Fees</b>
+	<br>Services: <%= number_to_currency(@repair.services_fee) %>
+	<br>Parts: <%= number_to_currency(@repair.parts_fee) %>
+</p>
+
+<p>
+	Repair Status: <%= @repair.status %>
+</p>

@@ -11,9 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150823190623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "repairs", force: :cascade do |t|
+    t.string   "customer_first_name"
+    t.string   "customer_last_name"
+    t.string   "customer_id_number"
+    t.string   "customer_email"
+    t.string   "customer_phone_number"
+    t.text     "device_description"
+    t.string   "device_serial_number"
+    t.string   "device_password"
+    t.text     "accessories_description"
+    t.text     "device_problem_description"
+    t.text     "repair_description"
+    t.decimal  "services_fee",               precision: 8, scale: 2, default: 0.0
+    t.decimal  "parts_fee",                  precision: 8, scale: 2, default: 0.0
+    t.integer  "status",                                             default: 0
+    t.datetime "created_at",                                                       null: false
+    t.datetime "updated_at",                                                       null: false
+  end
 
 end

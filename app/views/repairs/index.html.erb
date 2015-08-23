@@ -1,0 +1,26 @@
+<h1>Repairs</h1>
+
+<table>
+	<br>
+	<tr>
+		<td><b>ID</b></td>
+		<td><b>Problem</b></td>
+		<td><b>Name</b></td>
+	</tr>
+	<% @repairs.each do |repair| %>
+		<tr>
+			<td style="padding:0 15px 0 0px;" >
+				<%= link_to repair.id, repair_path(repair) %>			
+			</td>
+			
+			<td style="padding:0 15px 0 0px;">
+				<%= repair.device_problem_description %> 
+			</td>
+			<td style="padding:0 15px 0 0px;">
+				<%= repair.customer_last_name %> 
+			</td>
+	
+		</tr>
+
+	<% end %>
+</table>

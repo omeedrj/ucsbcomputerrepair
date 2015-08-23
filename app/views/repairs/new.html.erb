@@ -1,0 +1,75 @@
+<h1>New Repair</h1>
+
+<p>
+  <%= link_to 'Cancel', repairs_path %>
+</p>
+
+<%= form_for :repair, url: repairs_path do |f| %>
+  
+  <%= render 'shared/error_messages_repair' %>
+
+  <p>
+    <%= f.label :customer_first_name %>
+    <br>
+    <%= f.text_field :customer_first_name, :size=>"20" %>
+  </p>
+
+  <p>
+    <%= f.label :customer_last_name %>
+    <br>
+    <%= f.text_field :customer_last_name, :size=>"20" %>
+  </p>
+ 
+  <p>
+    <%= f.label :customer_id_number %>
+    <br>
+    <%= f.text_field :customer_id_number, :size=>"10" %>
+  </p>
+
+  <p>
+    <%= f.label :customer_email %>
+    <br>
+    <%= f.email_field :customer_email, :size=>"25" %>
+  </p>  
+
+  <p>
+    <%= f.label :customer_phone_number %>
+    <br>
+    <%= f.text_field :customer_phone_number, :size=>"10" %>
+  </p>
+
+  <p>
+    <%= f.label :device_description %>
+    <br>
+    <%= f.text_field :device_description, :cols=>"75", :rows=>"15" %>
+  </p>
+  
+  <p>
+    <%= f.label :device_password %>
+    <br>
+    <%= f.text_field :device_password, :size=>"20" %>
+  </p>
+
+  <p>
+    <%= f.label :device_serial_number %>
+    <br>
+    <%= f.text_field :device_serial_number, :size=>"20" %>
+  </p>
+
+  <p>
+    <%= f.label :accessories_description %>
+    <br>
+    <%= f.text_field :accessories_description, :size=>"20" %>
+  </p>
+
+  <p>
+    <%= f.label :device_problem_description %>
+    <br>
+    <%= f.text_field :device_problem_description, :cols=>"75", :rows=>"15" %>
+  </p>
+
+  <p>
+    <%= f.submit "Submit Repair Request"%>
+  </p>
+
+<% end %>

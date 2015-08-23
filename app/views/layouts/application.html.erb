@@ -6,6 +6,11 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<h2>
+	<%= link_to 'Home', root_path %>
+	<%= link_to 'Repairs', repairs_path %>
+	<%= link_to 'New Repair', new_repair_path %>
+</h2>
 <body>
 
 <%= yield %>

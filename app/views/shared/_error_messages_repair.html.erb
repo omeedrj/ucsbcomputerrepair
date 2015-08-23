@@ -1,0 +1,9 @@
+<% if @repair.errors.any? %>
+        <div id="error_explanation">
+          <ul>
+            <% @repair.errors.full_messages.each do |msg| %>
+              <li><font color = "FF0000"><%= msg %></font></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>

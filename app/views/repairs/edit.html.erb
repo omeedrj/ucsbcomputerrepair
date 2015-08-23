@@ -1,0 +1,142 @@
+<h2>Edit Repair</h2>
+
+<h3>Repair Id: <%= @repair.id %></h3>
+
+<p>
+  <%= link_to 'Cancel Edit', repair_path %>
+</p>
+
+<button id= "customer_info_button" type="button">Click to edit Customer Info</button>
+<button id= "device_info_button" type="button">Click to edit Device Info</button>
+<br>
+<div id="static_customer_info" style="display: inline-block;">
+  <p>
+    <b>Customer</b>
+    <table>
+      <tr>
+        <td><b>Name</b></td>
+        <td><b>Perm</b></td>
+        <td><b>Email</b></td>
+        <td><b>Phone #</b></td>
+      </tr>
+      <tr>
+        <td><%= @repair.customer_first_name %> <%= @repair.customer_last_name %></td>
+        <td><%= @repair.customer_id_number %></td>
+        <td><%= @repair.customer_email %></td>
+        <td><%= @repair.customer_phone_number %></td>
+      </tr>
+    </table>
+  </p>
+</div>
+
+<br>
+
+<div id="static_device_info" style="display: inline-block;">
+  
+  <p>
+    <b>Device</b>
+    <br>Description: <%= @repair.device_description %>
+    <br>Password: <%= @repair.device_password %>
+    <br>Serial #: <%= @repair.device_serial_number %>
+    <br>Accessories: <%= @repair.accessories_description %>
+    <br>Problem: <%= @repair.device_problem_description %>
+  </p>
+</div>
+
+<hr>
+
+<%= form_for :repair, url: repair_path(@repair), method: :patch do |f| %>
+  
+  <%= render 'shared/error_messages_repair' %>
+
+  <div id="customer_info" style="display: none;">
+    <p>
+      <%= f.label :customer_first_name %>
+      <br>
+      <%= f.text_field :customer_first_name, :size=>"20" %>
+    </p>
+
+    <p>
+      <%= f.label :customer_last_name %>
+      <br>
+      <%= f.text_field :customer_last_name, :size=>"20" %>
+    </p>
+   
+    <p>
+      <%= f.label :customer_id_number %>
+      <br>
+      <%= f.text_field :customer_id_number, :size=>"10" %>
+    </p>
+
+    <p>
+      <%= f.label :customer_email %>
+      <br>
+      <%= f.email_field :customer_email, :size=>"25" %>
+    </p>  
+
+    <p>
+      <%= f.label :customer_phone_number %>
+      <br>
+      <%= f.text_field :customer_phone_number, :size=>"10" %>
+    </p>
+  </div>
+
+  <div id="device_info" style="display: none;">
+    <p>
+      <%= f.label :device_description %>
+      <br>
+      <%= f.text_field :device_description, :cols=>"75", :rows=>"15" %>
+    </p>
+    
+    <p>
+      <%= f.label :device_password %>
+      <br>
+      <%= f.text_field :device_password, :size=>"20" %>
+    </p>
+
+    <p>
+      <%= f.label :device_serial_number %>
+      <br>
+      <%= f.text_field :device_serial_number, :size=>"20" %>
+    </p>
+
+    <p>
+      <%= f.label :accessories_description %>
+      <br>
+      <%= f.text_field :accessories_description, :size=>"20" %>
+    </p>
+
+    <p>
+      <%= f.label :device_problem_description %>
+      <br>
+      <%= f.text_field :device_problem_description, :cols=>"75", :rows=>"15" %>
+    </p>
+  </div>
+
+  <p>
+    <%= f.label :repair_description %>
+    <br>
+    <%= f.text_field :repair_description, :size=>"20" %>
+  </p>
+
+  <p>
+    <%= f.label :services_fee %>
+    <br>
+    <%= f.number_field :services_fee, :value => number_with_precision(@repair.services_fee, :precision => 2), :step => 0.01 %>
+    
+  </p>
+  
+  <p>
+    <%= f.label :parts_fee %>
+    <br>
+    <%= f.number_field :parts_fee, :value => number_with_precision(@repair.services_fee, :precision => 2), :step => 0.01 %>
+  </p>
+
+  <p>
+    <%= f.submit "Save Repair"%>
+  </p>
+
+<% end %>
+
+<%= javascript_include_tag "repairs_edit" %>
+
