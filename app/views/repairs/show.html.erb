@@ -3,32 +3,8 @@
 	<%= link_to 'Update Repair Info', edit_repair_path(@repair) %>
 </p>
 <h4>Customer</h4>
-<p>
-	<table>
-		<tr>
-			<td><b>Name</b></td>
-			<td><b>Perm</b></td>
-			<td><b>Email</b></td>
-			<td><b>Phone #</b></td>
-		</tr>
-		<tr>
-			<td><%= @repair.customer_first_name %> <%= @repair.customer_last_name %></td>
-			<td><%= @repair.customer_id_number %></td>
-			<td><%= @repair.customer_email %></td>
-			<td><%= @repair.customer_phone_number %></td>
-		</tr>
-	</table>
-</p>
 
-
-<p>
-	<b>Device</b>
-	<br>Description: <%= @repair.device_description %>
-	<br>Password: <%= @repair.device_password %>
-	<br>Serial #: <%= @repair.device_serial_number %>
-	<br>Accessories: <%= @repair.accessories_description %>
-	<br>Problem: <%= @repair.device_problem_description %>
-</p>
+<%= render 'repair_info' %>
 
 <hr>
 
@@ -44,3 +20,17 @@
 <p>
 	Repair Status: <%= @repair.status %>
 </p>
+
+<% if @repair.status == 'active' %> 
+	<%= link_to 'Ready for pickup', change_status_repair_path(@repair, state: 'ready_for_pickup'), method: :put %>
+	<br>
+	<%= link_to 'Computer was picked up', change_status_repair_path(@repair, state: 'inactive'), method: :put %>
+<% elsif @repair.status == 'ready_for_pickup' %>
+	<%= link_to 'Make Active Again', change_status_repair_path(@repair, :state => 'active'), method: :put %>
+	<br>
+	<%= link_to 'Computer was picked up', change_status_repair_path(@repair, :state => 'inactive'), method: :put %>
+<% else %>
+	<%= link_to 'Make Active Again', change_status_repair_path(@repair, :state => 'active'), method: :put %>
+	<br>
+	<%= link_to 'Change to "Ready for Pickup"', change_status_repair_path(@repair, :state => 'ready_for_pickup'), method: :put %>
+<% end %>

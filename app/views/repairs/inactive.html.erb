@@ -1,6 +1,6 @@
-<h1>Repairs</h1>
+<%= link_to 'Active', active_repairs_path %> <%= link_to 'Inactive', inactive_repairs_path %>
 
-<%= link_to 'Active', active_repairs_path %> <%= link_to 'Inactive', inactive_repairs_path %> 
+<h3>Inactive Repairs</h3>
 <table>
 	<br>
 	<tr>
@@ -8,7 +8,7 @@
 		<td><b>Problem</b></td>
 		<td><b>Name</b></td>
 	</tr>
-	<% @repairs.where(:status => 'active').each do |repair| %>
+	<% @repairs.each do |repair| %>
 		<tr>
 			<td style="padding:0 15px 0 0px;" >
 				<%= link_to repair.id, repair_path(repair) %>			

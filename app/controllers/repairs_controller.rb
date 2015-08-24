@@ -1,6 +1,14 @@
 class RepairsController < ApplicationController
 	def index
-		@repairs = Repair.all.order(created_at: :asc)
+		redirect_to active_repairs_path
+	end
+
+	def active
+		@repairs = Repair.all.where(:status => [0, 1]) # 0 is "active", 1 is "ready_for_pickup"
+	end
+
+	def inactive
+		@repairs = Repair.all.where(status: 2) # 2 is "inactive"
 	end
 
 	def show
@@ -34,8 +42,19 @@ class RepairsController < ApplicationController
 	end
 
 	def destroy
-
+		@repair = Repair.find(params[:id])
+		@repair.destroy
+		redirect_to repairs_path
 	end
+
+	def change_status
+		@repair = Repair.find(params[:id])
+		@repair.update_attribute(:status, params[:state])
+		redirect_to repairs_path
+		
+	end
+
+
 
 	private
 		def repair_params
@@ -44,6 +63,6 @@ class RepairsController < ApplicationController
 										   :device_description, :device_password, :device_serial_number,
 										   :accessories_description, :device_problem_description,
 										   :repair_description, :services_fee,
-										   :parts_fee )
+										   :parts_fee, :state )
 		end
 end
