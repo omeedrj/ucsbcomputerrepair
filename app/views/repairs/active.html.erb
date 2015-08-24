@@ -1,4 +1,7 @@
-<%= link_to 'Active', active_repairs_path %> <%= link_to 'Inactive', inactive_repairs_path %>
+<ul class="nav nav-tabs">
+	<li class="active"> <%= link_to 'Active', active_repairs_path %> </li>
+	<li> <%= link_to 'Inactive', inactive_repairs_path%> </li>
+</ul>
 
 <h3>Ready for Pickup</h3>
 
@@ -12,7 +15,7 @@
 	<% @repairs.where(:status => 1).each do |repair| %>
 		<tr>
 			<td style="padding:0 15px 0 0px;" >
-				<%= link_to repair.id, repair_path(repair) %>			
+				<%= link_to repair.id, repair_path(repair), class: "btn btn-default" %>			
 			</td>
 			
 			<td style="padding:0 15px 0 0px;">
@@ -40,7 +43,7 @@
 	<% @repairs.where(:status => 0).each do |repair| %>
 		<tr>
 			<td style="padding:0 15px 0 0px;" >
-				<%= link_to repair.id, repair_path(repair) %>			
+				<%= link_to repair.id, repair_path(repair), class: "btn btn-default" %>			
 			</td>
 			
 			<td style="padding:0 15px 0 0px;">

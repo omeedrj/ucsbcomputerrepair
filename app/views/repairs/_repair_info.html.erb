@@ -27,6 +27,6 @@
     <br>Password: <%= @repair.device_password %>
     <br>Serial #: <%= @repair.device_serial_number %>
     <br>Accessories: <%= @repair.accessories_description %>
-    <br>Problem: <%= @repair.device_problem_description %>
+    <br>Problem: <%= simple_format(@repair.device_problem_description) %>
   </p>
 </div>

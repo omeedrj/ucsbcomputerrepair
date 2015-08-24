@@ -1,5 +1,5 @@
 <h3>Repair Id: <%= @repair.id %></h3>
-<p> <%= link_to 'Update Repair Info', edit_repair_path(@repair) %> <p>
+<p> <%= link_to 'Update Repair Info', edit_repair_path(@repair), class: "btn btn-primary" %> <p>
 
 
 <%= render 'repair_info' %>
@@ -7,7 +7,7 @@
 <hr>
 
 <h4>Repair Description</h4>
-<p> <%= @repair.repair_description %> </p>
+<p> <%= simple_format(@repair.repair_description) %> </p>
 
 <p>
 	<b>Fees</b>
@@ -20,15 +20,15 @@
 </p>
 
 <% if @repair.status == 'active' %> 
-	<%= link_to 'Ready for pickup', change_status_repair_path(@repair, state: 'ready_for_pickup'), method: :put %>
-	<br>
-	<%= link_to 'Computer was picked up', change_status_repair_path(@repair, state: 'inactive'), method: :put %>
+	<%= link_to 'Ready for pickup', change_status_repair_path(@repair, state: 'ready_for_pickup'), method: :put, class: "btn btn-info" %>
+	<br><br>
+	<%= link_to 'Computer was picked up', change_status_repair_path(@repair, state: 'inactive'), method: :put, class: "btn btn-success" %>
 <% elsif @repair.status == 'ready_for_pickup' %>
-	<%= link_to 'Make Active Again', change_status_repair_path(@repair, :state => 'active'), method: :put %>
-	<br>
-	<%= link_to 'Computer was picked up', change_status_repair_path(@repair, :state => 'inactive'), method: :put %>
+	<%= link_to 'Make Active Again', change_status_repair_path(@repair, :state => 'active'), method: :put, class: "btn btn-danger"  %>
+	<br><br>
+	<%= link_to 'Computer was picked up', change_status_repair_path(@repair, :state => 'inactive'), method: :put, class: "btn btn-success"  %>
 <% else %>
-	<%= link_to 'Make Active Again', change_status_repair_path(@repair, :state => 'active'), method: :put %>
-	<br>
-	<%= link_to 'Change to "Ready for Pickup"', change_status_repair_path(@repair, :state => 'ready_for_pickup'), method: :put %>
+	<%= link_to 'Make Active Again', change_status_repair_path(@repair, :state => 'active'), method: :put, class: "btn btn-danger"  %>
+	<br><br>
+	<%= link_to 'Change to "Ready for Pickup"', change_status_repair_path(@repair, :state => 'ready_for_pickup'), method: :put, class: "btn btn-warning"  %>
 <% end %>
