@@ -9,7 +9,7 @@
 <button id= "customer_info_button" type="button" class="btn btn-default">Click to edit Customer Info</button>
 <button id= "device_info_button" type="button" class="btn btn-default">Click to edit Device Info</button>
 <br>
-
+<br>
 <%= render 'repair_info' %>
 
 <hr>
@@ -114,8 +114,11 @@
 <br>
 <br>
 <br>
-<%= link_to 'Delete Repair', repair_path(@repair), method: :delete, 
-            data: {confirm: 'Are you sure you want to delete this repair? This can not be undone and the data can not be retrieved.'}, class: "btn btn-danger" %>
+<button id= "show_delete_button" type="button" class="btn btn-default pull-right">Show Delete Button</button>
+<div id="delete_button_container" style="display: none;">
+  <%= link_to 'Delete Repair', repair_path(@repair), method: :delete, 
+              data: {confirm: 'Are you sure you want to delete this repair? This can not be undone and the data can not be retrieved.'}, class: "btn btn-danger" %>
+</div>
 <br>
 <br>
 <br>

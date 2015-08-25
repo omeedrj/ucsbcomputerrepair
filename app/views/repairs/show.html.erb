@@ -1,10 +1,49 @@
-<h3>Repair Id: <%= @repair.id %></h3>
-<p> <%= link_to 'Update Repair Info', edit_repair_path(@repair), class: "btn btn-primary" %> <p>
+<% if @repair.status == 'active' %>
+	<% state = 0 %>
+<% elsif @repair.status == 'ready_for_pickup' %>
+	<% state = 1 %>
+<% else %>
+	<% state = 2 %>
+<% end %>
+
+
+<% if state == 0 %>
+	<div class="panel panel-danger">
+	<div class="panel-heading"> <h4>Repair ID: <%= @repair.id %> Active</h4> </div>
+<% elsif state == 1 %>
+	<div class="panel panel-success">
+	<div class="panel-heading"> <h4>Repair ID: <%= @repair.id %> Ready for Pickup</h4> </div>
+<% else %>
+	<div class="panel panel-info">
+	<div class="panel-heading"> <h4>Repair ID: <%= @repair.id %> Inactive</h4> </div>
+<% end %>
+		  
+</div>
 
 
 <%= render 'repair_info' %>
+<hr>
+
+<% if state == 0 %> 
+	<%= link_to 'Ready for pickup', change_status_repair_path(@repair, state: 'ready_for_pickup'), method: :put, class: "btn btn-success", 
+																	data: {confirm: 'Ensure that the repair description and fees are correct.'} %>
+	<%= link_to 'Computer was picked up', change_status_repair_path(@repair, state: 'inactive'), method: :put, class: "btn btn-info",
+																				data: {confirm: 'Ensure that all accessories were also picked up.'} %>
+<% elsif state == 1 %>
+	<%= link_to 'Computer was picked up', change_status_repair_path(@repair, :state => 'inactive'), method: :put, class: "btn btn-info",
+																	  		data: {confirm: 'Ensure that all accessories were also picked up.'} %>
+	<%= link_to 'Make Active Again', change_status_repair_path(@repair, :state => 'active'), method: :put, class: "btn btn-danger pull-right" %>
+<% elsif %>
+	<%= link_to 'Change to "Ready for Pickup"', change_status_repair_path(@repair, :state => 'ready_for_pickup'), method: :put, class: "btn btn-success pull-right" %>
+	<%= link_to 'Make Active Again', change_status_repair_path(@repair, :state => 'active'), method: :put, class: "btn btn-danger pull-right" %>
+	
+<% end %>
+<br>
+<br>
 
 <hr>
+
+<p> <%= link_to 'Update Repair Info', edit_repair_path(@repair), class: "btn btn-primary" %> <p>
 
 <h4>Repair Description</h4>
 <p> <%= simple_format(@repair.repair_description) %> </p>
@@ -15,20 +54,6 @@
 	<br>Parts: <%= number_to_currency(@repair.parts_fee) %>
 </p>
 
-<p>
-	Repair Status: <%= @repair.status %>
-</p>
-
-<% if @repair.status == 'active' %> 
-	<%= link_to 'Ready for pickup', change_status_repair_path(@repair, state: 'ready_for_pickup'), method: :put, class: "btn btn-info" %>
-	<br><br>
-	<%= link_to 'Computer was picked up', change_status_repair_path(@repair, state: 'inactive'), method: :put, class: "btn btn-success" %>
-<% elsif @repair.status == 'ready_for_pickup' %>
-	<%= link_to 'Make Active Again', change_status_repair_path(@repair, :state => 'active'), method: :put, class: "btn btn-danger"  %>
-	<br><br>
-	<%= link_to 'Computer was picked up', change_status_repair_path(@repair, :state => 'inactive'), method: :put, class: "btn btn-success"  %>
-<% else %>
-	<%= link_to 'Make Active Again', change_status_repair_path(@repair, :state => 'active'), method: :put, class: "btn btn-danger"  %>
-	<br><br>
-	<%= link_to 'Change to "Ready for Pickup"', change_status_repair_path(@repair, :state => 'ready_for_pickup'), method: :put, class: "btn btn-warning"  %>
-<% end %>
+<br>
+<br>
+<br>

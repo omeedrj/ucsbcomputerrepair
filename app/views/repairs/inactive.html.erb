@@ -3,28 +3,22 @@
 	<li class="active"> <%= link_to 'Inactive', inactive_repairs_path%> </li>
 </ul>
 
-<h3>Inactive Repairs</h3>
-<table>
-	<br>
-	<tr>
-		<td><b>ID</b></td>
-		<td><b>Problem</b></td>
-		<td><b>Name</b></td>
-	</tr>
-	<% @repairs.each do |repair| %>
-		<tr>
-			<td style="padding:0 15px 0 0px;" >
-				<%= link_to repair.id, repair_path(repair), class: "btn btn-default" %>			
-			</td>
-			
-			<td style="padding:0 15px 0 0px;">
-				<%= repair.device_problem_description %> 
-			</td>
-			<td style="padding:0 15px 0 0px;">
-				<%= repair.customer_last_name %> 
-			</td>
-	
-		</tr>
+<br>
 
-	<% end %>
-</table>
+<div class="panel panel-info">
+	<div class="panel-heading"><strong>Inactive</strong></div>
+	<table class="table">
+		<tr>
+			<td><b>ID</b></td>
+			<td><b>Problem</b></td>
+			<td><b>Name</b></td>
+		</tr>
+		<% @repairs.each do |repair| %>
+				<tr>
+					<td> <%= link_to repair.id, repair_path(repair) %>	</td>
+					<td> <%= repair.device_problem_description %> </td>
+					<td> <%= repair.customer_first_name %> <%= repair.customer_last_name %></td>
+				</tr>
+			<% end %>
+	</table>
+</div>

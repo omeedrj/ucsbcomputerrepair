@@ -1,32 +1,32 @@
-<div id="static_customer_info" style="display: inline-block;">
-  <p>
-    <b>Customer</b>
-    <table>
-      <tr>
-        <td><b>Name</b></td>
-        <td><b>Perm</b></td>
-        <td><b>Email</b></td>
-        <td><b>Phone #</b></td>
-      </tr>
-      <tr>
-        <td><%= @repair.customer_first_name %> <%= @repair.customer_last_name %></td>
-        <td><%= @repair.customer_id_number %></td>
-        <td><%= @repair.customer_email %></td>
-        <td><%= @repair.customer_phone_number %></td>
-      </tr>
-    </table>
-  </p>
+<div id="static_customer_info" style="display: inline;">
+  <div class="panel panel-default">
+    <div class="panel-heading">Customer</div>
+    <div class="panel-body">
+      <table class="table">
+        <tr>
+          <td><b>Name</b></td>
+          <td><b>Perm</b></td>
+          <td><b>Email</b></td>
+          <td><b>Phone #</b></td>
+        </tr>
+        <tr>
+          <td><%= @repair.customer_first_name %> <%= @repair.customer_last_name %></td>
+          <td><%= @repair.customer_id_number %></td>
+          <td><%= @repair.customer_email %></td>
+          <td><%= @repair.customer_phone_number %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
 
 <br>
 
-<div id="static_device_info" style="display: inline-block;">
-  <p>
+<div id="static_device_info" style="display: inline;">
     <b>Device</b>
     <br>Description: <%= @repair.device_description %>
     <br>Password: <%= @repair.device_password %>
     <br>Serial #: <%= @repair.device_serial_number %>
     <br>Accessories: <%= @repair.accessories_description %>
     <br>Problem: <%= simple_format(@repair.device_problem_description) %>
-  </p>
 </div>

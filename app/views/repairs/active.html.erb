@@ -3,59 +3,43 @@
 	<li> <%= link_to 'Inactive', inactive_repairs_path%> </li>
 </ul>
 
-<h3>Ready for Pickup</h3>
+<br>
 
-<table>
-	<br>
-	<tr>
-		<td><b>ID</b></td>
-		<td><b>Problem</b></td>
-		<td><b>Name</b></td>
-	</tr>
-	<% @repairs.where(:status => 1).each do |repair| %>
+<div class="panel panel-success">
+	<div class="panel-heading"><strong>Ready for pickup</strong></div>
+	<table class="table">
 		<tr>
-			<td style="padding:0 15px 0 0px;" >
-				<%= link_to repair.id, repair_path(repair), class: "btn btn-default" %>			
-			</td>
-			
-			<td style="padding:0 15px 0 0px;">
-				<%= repair.device_problem_description %> 
-			</td>
-			<td style="padding:0 15px 0 0px;">
-				<%= repair.customer_last_name %> 
-			</td>
-	
+			<td><b>ID</b></td>
+			<td><b>Problem</b></td>
+			<td><b>Name</b></td>
 		</tr>
-
-	<% end %>
-</table>
+		<% @repairs.where(:status => 1).each do |repair| %>
+			<tr>
+				<td> <%= link_to repair.id, repair_path(repair) %>	</td>
+				<td> <%= repair.device_problem_description %> </td>
+				<td> <%= repair.customer_first_name %> <%= repair.customer_last_name %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
 
 <hr>
 
-<h3>Active Repairs</h3>
-<table>
-	<br>
-	<tr>
-		<td><b>ID</b></td>
-		<td><b>Problem</b></td>
-		<td><b>Name</b></td>
-	</tr>
-	<% @repairs.where(:status => 0).each do |repair| %>
+<div class="panel panel-danger">
+	<div class="panel-heading"><strong>Active</strong></div>
+	<table class="table">
 		<tr>
-			<td style="padding:0 15px 0 0px;" >
-				<%= link_to repair.id, repair_path(repair), class: "btn btn-default" %>			
-			</td>
-			
-			<td style="padding:0 15px 0 0px;">
-				<%= repair.device_problem_description %> 
-			</td>
-			<td style="padding:0 15px 0 0px;">
-				<%= repair.customer_last_name %> 
-			</td>
-	
+			<td><b>ID</b></td>
+			<td><b>Problem</b></td>
+			<td><b>Name</b></td>
 		</tr>
-
-	<% end %>
-</table>
-
+		<% @repairs.where(:status => 0).each do |repair| %>
+				<tr>
+					<td> <%= link_to repair.id, repair_path(repair) %>	</td>
+					<td> <%= repair.device_problem_description %> </td>
+					<td> <%= repair.customer_first_name %> <%= repair.customer_last_name %> </td>
+				</tr>
+			<% end %>
+	</table>
+</div>
 
