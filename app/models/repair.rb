@@ -14,8 +14,8 @@ class Repair < ActiveRecord::Base
 						allow_blank: true
 	validates :device_problem_description, presence: true
   validates :terms_of_service_accepted, acceptance: true
-  validates :services_fee, presence: true
-  validates :parts_fee, presence: true
+  validates :services_fee, presence: true, :numericality => {:greater_than_or_equal_to => 0, :less_than => 1000000}
+  validates :parts_fee, presence: true, :numericality => {:greater_than_or_equal_to => 0, :less_than => 1000000}
 
 	enum status: [ :active, :ready_for_pickup, :inactive ]
 
