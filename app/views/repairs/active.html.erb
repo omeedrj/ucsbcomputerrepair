@@ -45,8 +45,14 @@
 									   repair.device_problem_description
 									 else 
 									   repair.device_problem_description[0..150] + "..."
-									 end %>
-					<td> <%= repair.device_description[0..50] %> </td>
+									 end %> 
+					</td>
+					<td> <%= if repair.device_description.length < 100
+									  repair.device_description
+									else 
+									 repair.device_description[0..100] + "..."
+									end %> 
+					</td>
 				</tr>
 			<% end %>
 	</table>
