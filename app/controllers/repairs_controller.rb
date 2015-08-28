@@ -1,4 +1,6 @@
 class RepairsController < ApplicationController
+	http_basic_authenticate_with name: "bookstore", password: "computers"
+
 	def index
 		redirect_to active_repairs_path
 	end
