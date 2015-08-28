@@ -25,7 +25,7 @@
 	<div class="panel panel-danger">
 	<div class="panel-heading"> 
 		<h4>
-			Repair ID: <%= @repair.id %> Active 
+			Repair ID: <%= @repair.id %> Active
 		</h4>
 	</div>
 	</div>	
@@ -71,16 +71,31 @@
 
 <p> <%= link_to 'Update Repair Info', edit_repair_path(@repair), class: "btn btn-primary" %> <p>
 
-<h4>Repair Description</h4>
-<p> <%= simple_format(@repair.repair_description) %> </p>
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h4>Repair Description</h4></div>
+      <div class="panel-body">  
+        <%= simple_format(@repair.repair_description) %>
+      </div>
+    </div>
+  </div>
 
-<p>
-	<b>Fees</b>
-	<br>Services: <%= number_to_currency(@repair.services_fee) %>
-	<br>Parts: <%= number_to_currency(@repair.parts_fee) %>
-</p>
+	<div class="col-xs-12 col-sm-6 col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h4>Fees</h4></div>
+      <div class="panel-body">  
+      	Services: <%= number_to_currency(@repair.services_fee) %>
+				<br>Parts: <%= number_to_currency(@repair.parts_fee) %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<br>
-<br>
-<br>
-<br>
+
+
+
+
+
+
+

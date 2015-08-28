@@ -13,8 +13,13 @@
  *= require_self
  */
 
-@import "bootstrap-sprockets"
-@import "bootstrap"
+$body-bg: #FBFBFB;
+$panel-default-heading-bg: #D9D9D9;
+$navbar-default-bg: #0033FF;
+
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 //= require jquery
 //= require jquery_ujs

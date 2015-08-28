@@ -6,11 +6,10 @@
   <%= link_to 'Cancel Edit', repair_path, class: "btn btn-warning" %>
 </p>
 
-<button id= "customer_info_button" type="button" class="btn btn-default">Click to edit Customer Info</button>
-<button id= "device_info_button" type="button" class="btn btn-default">Click to edit Device Info</button>
-<br>
 <br>
 <%= render 'repair_info' %>
+
+<button id= "more_details_button" type="button" class="btn btn-default">Edit details</button>
 
 <hr>
 
@@ -18,70 +17,74 @@
   
   <%= render 'shared/error_messages_repair' %>
 
-  <div id="customer_info" style="display: none;">
-    <p>
-    <%= f.label :customer_first_name, "First Name" %> 
-    <br>
-    <%= f.text_field :customer_first_name, :size=>"20" %>
-  </p>
-  <p>
-    <%= f.label :customer_last_name, "Last Name" %>
-    <br>
-    <%= f.text_field :customer_last_name, :size=>"20" %>
-  </p>
- 
-  <p>
-    <%= f.label :customer_id_number, "UCSB Perm/ID #" %>
-    <br>
-    <%= f.text_field :customer_id_number, :size=>"7" %>
-  </p>
+  <div id="more_details" class="row" style="display: none;">
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <p>
+      <%= f.label :customer_first_name, "First Name" %> 
+      <br>
+      <%= f.text_field :customer_first_name, :size=>"20" %>
+      </p>
+      <p>
+        <%= f.label :customer_last_name, "Last Name" %>
+        <br>
+        <%= f.text_field :customer_last_name, :size=>"20" %>
+      </p>
+     
+      <p>
+        <%= f.label :customer_id_number, "UCSB Perm/ID #" %>
+        <br>
+        <%= f.text_field :customer_id_number, :size=>"7" %>
+      </p>
 
-  <p>
-    <%= f.label :customer_email, "Email" %>
-    <br>
-    <%= f.email_field :customer_email, :size=>"25" %>
-  </p>  
+      <p>
+        <%= f.label :customer_email, "Email" %>
+        <br>
+        <%= f.email_field :customer_email, :size=>"25" %>
+      </p>  
 
-  <p>
-    <%= f.label :customer_phone_number, "Phone Number" %>
-    <br>  
-    <small>(Format: 555-555-5555)</small>
-    <br>
-    <%= f.text_field :customer_phone_number, :size=>"14" %>
-  </p>
+      <p>
+        <%= f.label :customer_phone_number, "Phone Number" %>
+        <br>  
+        <small>(Format: 555-555-5555)</small>
+        <br>
+        <%= f.text_field :customer_phone_number, :size=>"14" %>
+      </p>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <p>
+      <%= f.label :device_description, "Device Description" %> 
+      <br>
+      <%= f.text_area :device_description, :cols=> "30", :rows=>"2"  %>
+      </p>
+      
+      <p>
+        <%= f.label :device_password, "Device Password" %>
+        <br>
+        <%= f.text_field :device_password, :size=>"20" %>
+      </p>
+
+      <p>
+        <%= f.label :device_serial_number, "Device Serial Number" %>
+        <br>
+        <%= f.text_field :device_serial_number, :size=>"20" %>
+      </p>
+
+      <p>
+        <%= f.label :accessories_description, "Accessories" %>
+        <br>
+        <%= f.text_area :accessories_description, :size=>"30" %>
+      </p>
+    </div>
+
+    <div class="col-xs-12 col-sm-8 col-md-3">
+      <%= f.label :device_problem_description, "Problem Description" %>
+      <br>
+      <%= f.text_area :device_problem_description, :cols=>"60", :rows=>"4" %>
+    </div>
   </div>
-
-  <div id="device_info" style="display: none;">
-    <p>
-    <%= f.label :device_description, "Device Description" %> 
-    <br>
-    <%= f.text_area :device_description, :cols=> "70", :rows=>"2"  %>
-  </p>
   
-  <p>
-    <%= f.label :device_password, "Device Password" %>
-    <br>
-    <%= f.text_field :device_password, :size=>"20" %>
-  </p>
-
-  <p>
-    <%= f.label :device_serial_number, "Device Serial Number" %>
-    <br>
-    <%= f.text_field :device_serial_number, :size=>"20" %>
-  </p>
-
-  <p>
-    <%= f.label :accessories_description, "Accessories" %>
-    <br>
-    <%= f.text_area :accessories_description, :size=>"40" %>
-  </p>
-
-  <p>
-    <%= f.label :device_problem_description, "Problem(s) Description" %>
-    <br>
-    <%= f.text_area :device_problem_description, :cols=>"70", :rows=>"4" %>
-  </p>
-  </div>
+  <br>
 
   <p>
     <%= f.label :repair_description, "Repair Description" %>

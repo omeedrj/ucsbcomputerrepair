@@ -4,11 +4,11 @@ class RepairsController < ApplicationController
 	end
 
 	def active
-		@repairs = Repair.all.where(:status => [0, 1]) # 0 is "active", 1 is "ready_for_pickup"
+		@repairs = Repair.all.where(:status => [0, 1]).order("created_at ASC") # 0 is "active", 1 is "ready_for_pickup"
 	end
 
 	def inactive
-		@repairs = Repair.all.where(status: 2) # 2 is "inactive"
+		@repairs = Repair.all.where(status: 2).order("created_at DESC") # 2 is "inactive"
 	end
 
 	def show

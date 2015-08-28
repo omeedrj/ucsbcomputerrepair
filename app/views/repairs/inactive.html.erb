@@ -9,15 +9,24 @@
 	<div class="panel-heading"><strong>Inactive</strong></div>
 	<table class="table">
 		<tr>
-			<td><b>ID</b></td>
-			<td><b>Problem</b></td>
-			<td><b>Name</b></td>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Date Submitted</th>
+			<th>Problem</th>
+			<th>Device</th>
+			
 		</tr>
 		<% @repairs.each do |repair| %>
 				<tr>
 					<td> <%= link_to repair.id, repair_path(repair) %>	</td>
-					<td> <%= repair.device_problem_description %> </td>
-					<td> <%= repair.customer_first_name %> <%= repair.customer_last_name %></td>
+					<td> <%= repair.customer_first_name %> <%= repair.customer_last_name %> </td>
+					<td> <%= repair.created_at.strftime("%x %I:%M %p") %> </td>
+					<td> <%= if repair.device_problem_description.length < 150
+									   repair.device_problem_description
+									 else 
+									   repair.device_problem_description[0..150] + "..."
+									 end %>
+					<td> <%= repair.device_description %> </td>
 				</tr>
 			<% end %>
 	</table>

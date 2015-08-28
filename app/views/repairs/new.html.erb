@@ -1,90 +1,110 @@
-<h2>Repair Request Form</h2>
-
-<p>
-  <%= link_to 'Cancel', repairs_path, class: "btn btn-warning" %>
-</p>
+<h2>Repair Request Form <%= link_to 'Cancel', repairs_path, class: "btn btn-warning" %> </h2>
 
 <%= form_for :repair, url: repairs_path do |f| %>
   
   <%= render 'shared/error_messages_repair' %>
-
-  <p class="form-inline">
-    <%= f.label :customer_first_name, "First Name" %> 
-    <%= f.text_field :customer_first_name, :size=>"20" %>
   
-    <%= f.label :customer_last_name, "Last Name" %>
-    <%= f.text_field :customer_last_name, :size=>"20", class: "form_inline" %>
+  <div class="row">
+    <div class="col-xs-12 col-sm-3 col-md-3">
+      <%= f.label :customer_first_name, "First Name" %> 
+      <br>
+      <%= f.text_field :customer_first_name, :size=>"20" %>
+    </div>  
+    <div class="col-xs-12 col-sm-3 col-md-3">
+      <%= f.label :customer_last_name, "Last Name" %>
+      <br>
+      <%= f.text_field :customer_last_name, :size=>"20" %>
+    </div>
+      
+    <div class="col-xs-12 col-sm-3 col-md-3">
+      <%= f.label :customer_id_number, "UCSB Perm/ID #" %>
+      <br>
+      <%= f.text_field :customer_id_number, :size=>"7" %>
+    </div>
+  </div>
 
-    <%= f.label :customer_id_number, "UCSB Perm/ID #" %>
-    <%= f.text_field :customer_id_number, :size=>"7" %>
-  </p>
+  <br>
 
-  <p>
-    
-  </p>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6">
+      <p>
+        <%= f.label :customer_email, "Email" %>
+        <small>(You will be sent updates regarding your repair so check your email regularly.)</small>
+        <br>
+        <%= f.email_field :customer_email, :size=>"50" %>
+      </p>  
+    </div>
 
-  <p>
-    <%= f.label :customer_email, "Email" %>
-    <small>(You will be sent updates regarding your repair so check your email regularly.)</small>
-    <br>
-    <%= f.email_field :customer_email, :size=>"50" %>
-  </p>  
-
-  <p>
-    <%= f.label :customer_phone_number, "Phone Number" %> 
-    <small>(Format: 555-555-5555)</small>
-    <br>
-    <%= f.text_field :customer_phone_number, :size=>"14" %>
-  </p>
-
-  <p>
-    <%= f.label :device_description, "Device Description" %> 
-    <small>(Please be as descriptive as possible.)</small>
-    <br>
-    <small>(I.e. brand, model, color, screen size, specific stickers, etc.)</small>
-    <br>
-    <small>(Ex: Apple Retina Macbook Pro, 13" screen. Blue UCSB sticker on top.)</small>
-    <br>
-    <%= f.text_area :device_description, :cols=> "70", :rows=>"3"  %>
-  </p>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <p>
+        <%= f.label :customer_phone_number, "Phone Number" %> 
+        <small>(Format: 555-555-5555)</small>
+        <br>
+        <%= f.text_field :customer_phone_number, :size=>"14" %>
+      </p>
+    </div>
+  </div>
   
-  <p>
-    <%= f.label :device_password, "Device Password" %>
-    <small>(Leave blank if there is no password.)</small>
-    <br>
-    <%= f.text_field :device_password, :size=>"20" %>
-  </p>
+  <br>
 
-  <p>
-    <%= f.label :device_serial_number, "Device Serial Number" %>
-    <br>
-    <%= f.text_field :device_serial_number, :size=>"20" %>
-  </p>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6">
+      <%= f.label :device_description, "Device Description" %> 
+      <small>(Please be as descriptive as possible.)</small>
+      <br>
+      <small>(I.e. brand, model, color, screen size, specific stickers, etc.)</small>
+      <br>
+      <small>(Ex: Apple Retina Macbook Pro, 13" screen. Blue UCSB sticker on top.)</small>
+      <br>
+      <%= f.text_area :device_description, :cols=> "50", :rows=>"2"  %>
+    </div>
 
-  <p>
-    <%= f.label :accessories_description, "Accessories" %>
-    <br>
-    <small>(Ex: Apple charger, black carrying case, Samsung external hard drive, 16 GB USB, etc.)</small>
-    <br>
-    <%= f.text_area :accessories_description, :size=>"40" %>
-  </p>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <%= f.label :device_password, "Device Password" %>
+      <small>(Leave blank if there is no password.)</small>
+      <br>
+      <%= f.text_field :device_password, :size=>"20" %>
+      
+      <br>
+      <br>
 
-  <p>
-    <%= f.label :device_problem_description, "Problem(s) Description" %>
-    <small>(Please be as detailed as possible)</small>
-    <br>
-    <small>(Ex: problematic symptoms, how to recreate the problem(s), possible damage to the device, what needs to be fixed, etc.)</small>
-    <br>
-    <%= f.text_area :device_problem_description, :cols=>"75", :rows=>"15" %>
-  </p>
+      <%= f.label :device_serial_number, "Device Serial Number" %>
+      <br>
+      <%= f.text_field :device_serial_number, :size=>"20" %>
+    </div>
+  </div>
   
-  <p>
-    By submitting the repair request form I acknowledge that there is no guarantee that my device will be fixed.
-    <br><br>
-    Updates regarding the repair will be emailed to you and you will be notified before repairs are made what the estimated costs will be.
-    <br>
-    You are free to cancel the repair request at any time before repairs are made by emailing ___________ or calling _____________. 
-  </p>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6">
+      <%= f.label :accessories_description, "Accessories" %>
+      <small>(Ex: Apple charger, black carrying case, Samsung external hard drive, 16 GB USB, etc.)</small>
+      <br>
+      <%= f.text_area :accessories_description, :size=>"40" %>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6">
+      <%= f.label :device_problem_description, "Problem(s) Description" %>
+      <small>(Please be as detailed as possible)</small>
+      <br>
+      <small>(Ex: problematic symptoms, how to recreate the problem(s), possible damage to the device, what needs to be fixed, etc.)</small>
+      <br>
+      <%= f.text_area :device_problem_description, :cols=>"75", :rows=>"10" %>
+    </div>
+  </div>
+  
+  <br>
+
+  <div class="row">
+    <div class="col-xs-10 col-sm-6 col-md-8">
+      By pressing "Submit Repair Request" I hereby acknowledge the release of my machine to the UCSB Bookstore, and that the UCSB Bookstore is not liable for data loss when servicing my machine. I have been informed to back up data before submitting my machine.
+    </div>
+  </div>
+  
+  <br>
 
   <p>
     <%= f.submit "Submit Repair Request", class: "btn btn-success"%>
