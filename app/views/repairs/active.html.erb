@@ -46,7 +46,7 @@
 									 else 
 									   repair.device_problem_description[0..150] + "..."
 									 end %>
-					<td> <%= repair.device_description %> </td>
+					<td> <%= repair.device_description[0..50] %> </td>
 				</tr>
 			<% end %>
 	</table>
