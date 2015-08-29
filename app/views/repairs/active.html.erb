@@ -7,15 +7,13 @@
 
 <div class="panel panel-success">
 	<div class="panel-heading"><strong>Ready for pickup</strong></div>
-	<table class="table">
-		<tr>
+	<table class="table table-hover">
 			<th>ID</th>
 			<th>Name</th>
 			<th>Date Submitted</th>
-		</tr>
 		<% @repairs.where(:status => 1).each do |repair| %>
-			<tr>
-				<td> <%= link_to repair.id, repair_path(repair) %>	</td>
+			<tr data-link="<%= repair_path(repair) %>">
+				<td> <%= repair.id %>	</td>
 				<td> <%= repair.customer_first_name %> <%= repair.customer_last_name %></td>
 				<td> <%= repair.created_at.strftime("%x %I:%M %p") %> </td>
 			</tr>
@@ -27,18 +25,15 @@
 
 <div class="panel panel-danger">
 	<div class="panel-heading"><strong>Active</strong></div>
-	<table class="table">
-		<tr>
+	<table class="table table-hover">
 			<th>ID</th>
 			<th>Name</th>
 			<th>Date Submitted</th>
 			<th>Problem</th>
 			<th>Device</th>
-			
-		</tr>
 		<% @repairs.where(:status => 0).each do |repair| %>
-				<tr>
-					<td> <%= link_to repair.id, repair_path(repair) %>	</td>
+				<tr data-link="<%= repair_path(repair) %>">
+					<td> <%= repair.id %>	</td>
 					<td> <%= repair.customer_first_name %> <%= repair.customer_last_name %> </td>
 					<td> <%= repair.created_at.strftime("%x %I:%M %p") %> </td>
 					<td> <%= if repair.device_problem_description.length < 150
@@ -58,3 +53,4 @@
 	</table>
 </div>
 
+<% javascript_include_tag "repairs_active_inactive" %>

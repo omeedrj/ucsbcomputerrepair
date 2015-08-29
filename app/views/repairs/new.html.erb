@@ -4,34 +4,34 @@
   
   <%= render 'shared/error_messages_repair' %>
   
-  <div class="row">
+  <div class="row" >
     <div class="col-xs-12 col-sm-3 col-md-3">
       <%= f.label :customer_first_name, "First Name" %> 
       <br>
-      <%= f.text_field :customer_first_name, :size=>"20" %>
+      <%= f.text_field :customer_first_name, class: "form-control" %>
     </div>  
     <div class="col-xs-12 col-sm-3 col-md-3">
       <%= f.label :customer_last_name, "Last Name" %>
       <br>
-      <%= f.text_field :customer_last_name, :size=>"20" %>
+      <%= f.text_field :customer_last_name, class: "form-control" %>
     </div>
       
-    <div class="col-xs-12 col-sm-3 col-md-3">
+    <div class="col-xs-12 col-sm-3 col-md-2">
       <%= f.label :customer_id_number, "UCSB Perm/ID #" %>
       <br>
-      <%= f.text_field :customer_id_number, :size=>"7" %>
+      <%= f.text_field :customer_id_number, class: "form-control" %>
     </div>
   </div>
 
   <br>
 
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-6">
+    <div class="col-xs-12 col-sm-6 col-md-4">
       <p>
         <%= f.label :customer_email, "Email" %>
-        <small>(You will be sent updates regarding your repair so check your email regularly.)</small>
+        <small>(You will be sent updates regarding your repair.)</small>
         <br>
-        <%= f.email_field :customer_email, :size=>"50" %>
+        <%= f.email_field :customer_email, class: "form-control" %>
       </p>  
     </div>
 
@@ -40,7 +40,7 @@
         <%= f.label :customer_phone_number, "Phone Number" %> 
         <small>(Format: 555-555-5555)</small>
         <br>
-        <%= f.text_field :customer_phone_number, :size=>"14" %>
+        <%= f.text_field :customer_phone_number, class: "form-control" %>
       </p>
     </div>
   </div>
@@ -48,7 +48,7 @@
   <br>
 
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-6">
+    <div class="col-xs-12 col-sm-6 col-md-4">
       <%= f.label :device_description, "Device Description" %> 
       <small>(Please be as descriptive as possible.)</small>
       <br>
@@ -56,30 +56,32 @@
       <br>
       <small>(Ex: Apple Retina Macbook Pro, 13" screen. Blue UCSB sticker on top.)</small>
       <br>
-      <%= f.text_area :device_description, :cols=> "50", :rows=>"2"  %>
+      <%= f.text_area :device_description, class: "form-control", rows: 3 %>
     </div>
 
-    <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="col-xs-12 col-sm-6 col-md-3">
       <%= f.label :device_password, "Device Password" %>
+      <br>
       <small>(Leave blank if there is no password.)</small>
       <br>
-      <%= f.text_field :device_password, :size=>"20" %>
+      <%= f.text_field :device_password, class: "form-control" %>
       
-      <br>
-      <br>
+
 
       <%= f.label :device_serial_number, "Device Serial Number" %>
       <br>
-      <%= f.text_field :device_serial_number, :size=>"20" %>
+      <%= f.text_field :device_serial_number, class: "form-control" %>
     </div>
   </div>
   
+  <br>
+
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-6">
+    <div class="col-xs-12 col-sm-6 col-md-4">
       <%= f.label :accessories_description, "Accessories" %>
       <small>(Ex: Apple charger, black carrying case, Samsung external hard drive, 16 GB USB, etc.)</small>
       <br>
-      <%= f.text_area :accessories_description, :size=>"40" %>
+      <%= f.text_area :accessories_description, class: "form-control" %>
     </div>
   </div>
 
@@ -92,7 +94,7 @@
       <br>
       <small>(Ex: problematic symptoms, how to recreate the problem(s), possible damage to the device, what needs to be fixed, etc.)</small>
       <br>
-      <%= f.text_area :device_problem_description, :cols=>"75", :rows=>"10" %>
+      <%= f.text_area :device_problem_description, class: "form-control", rows: 4 %>
     </div>
   </div>
   
@@ -109,8 +111,6 @@
   <p>
     <%= f.submit "Submit Repair Request", class: "btn btn-success"%>
   </p>
-  <br>
-  <br>
-
+ 
 
 <% end %>

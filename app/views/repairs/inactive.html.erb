@@ -7,18 +7,15 @@
 
 <div class="panel panel-info">
 	<div class="panel-heading"><strong>Inactive</strong></div>
-	<table class="table">
-		<tr>
+	<table class="table table-hover">
 			<th>ID</th>
 			<th>Name</th>
 			<th>Date Submitted</th>
 			<th>Problem</th>
 			<th>Device</th>
-			
-		</tr>
 		<% @repairs.each do |repair| %>
-				<tr>
-					<td> <%= link_to repair.id, repair_path(repair) %>	</td>
+				<tr data-link="<%= repair_path(repair) %>">
+					<td> <%= repair.id %>	</td>
 					<td> <%= repair.customer_first_name %> <%= repair.customer_last_name %> </td>
 					<td> <%= repair.created_at.strftime("%x %I:%M %p") %> </td>
 					<td> <%= if repair.device_problem_description.length < 150
@@ -31,3 +28,5 @@
 			<% end %>
 	</table>
 </div>
+
+<% javascript_include_tag "repairs_active_inactive" %>

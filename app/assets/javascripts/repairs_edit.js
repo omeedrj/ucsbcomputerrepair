@@ -1,3 +1,5 @@
+// Change to jquery
+
 var more_details = document.getElementById("more_details");
 var more_details_button = document.getElementById("more_details_button");
 
