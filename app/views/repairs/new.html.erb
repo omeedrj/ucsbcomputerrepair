@@ -64,9 +64,10 @@
       <br>
       <small>(Leave blank if there is no password.)</small>
       <br>
-      <%= f.text_field :device_password, class: "form-control" %>
+      <%= f.password_field :device_password, class: "form-control" %>
       
-
+      <%= f.label :device_password_confirmation, "Confirm Device Password" %>
+      <%= f.password_field :device_password_confirmation, class: "form-control" %>
 
       <%= f.label :device_serial_number, "Device Serial Number" %>
       <br>

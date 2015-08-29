@@ -53,7 +53,6 @@ class RepairsController < ApplicationController
 		@repair = Repair.find(params[:id])
 		@repair.update_attribute(:status, params[:state])
 		redirect_to repairs_path
-		
 	end
 
 
@@ -65,6 +64,6 @@ class RepairsController < ApplicationController
 										   :device_description, :device_password, :device_serial_number,
 										   :accessories_description, :device_problem_description,
 										   :repair_description, :services_fee,
-										   :parts_fee, :state )
+										   :parts_fee, :state, :device_password_confirmation )
 		end
 end

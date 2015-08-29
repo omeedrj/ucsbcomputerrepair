@@ -12,6 +12,7 @@ class Repair < ActiveRecord::Base
 						format: { with: VALID_EMAIL_REGEX }
   validates :customer_phone_number, presence: true, format: { with: VALID_PHONE_NUMBER_REGEX }, 
 						allow_blank: true
+	validates :device_password, confirmation: true
 	validates :device_problem_description, presence: true
   validates :terms_of_service_accepted, acceptance: true
   validates :services_fee, presence: true, :numericality => {:greater_than_or_equal_to => 0, :less_than => 1000000}

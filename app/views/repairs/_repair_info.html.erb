@@ -26,7 +26,13 @@
           <h5 class="list-group-item-heading"> <b>Description:</b></h5>
           <p class="list-group-item-text"> <%= @repair.device_description %> </p>
           <h5 class="list-group-item-heading"> <b>Password:</b> </h5>
-          <p class="list-group-item-text"> <%= @repair.device_password %> </p>
+          <p class="list-group-item-text"> 
+            <% if @repair.device_password.empty? %>
+              No Password
+            <% else%>
+              <pre><%= @repair.device_password %></pre> 
+            <% end %>
+          </p>
           <h5 class="list-group-item-heading"><b>Serial #:</b></h5>
           <p class="list-group-item-text"> <%= @repair.device_serial_number %> </p>
           <h5 class="list-group-item-heading"><b>Accessories:</b></h5>
