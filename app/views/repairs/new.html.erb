@@ -66,15 +66,23 @@
       <br>
       <%= f.password_field :device_password, class: "form-control" %>
       
+      <br>
+
       <%= f.label :device_password_confirmation, "Confirm Device Password" %>
       <%= f.password_field :device_password_confirmation, class: "form-control" %>
+    </div>
+  </div>
+  
+  <br>
 
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4">
       <%= f.label :device_serial_number, "Device Serial Number" %>
       <br>
       <%= f.text_field :device_serial_number, class: "form-control" %>
     </div>
   </div>
-  
+
   <br>
 
   <div class="row">
