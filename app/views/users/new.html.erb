@@ -1,0 +1,32 @@
+<%= form_for(@user) do |f| %>
+  <%= render 'shared/error_messages_user' %>
+
+  <%= f.label :first_name, "First Name" %>
+  <%= f.text_field :first_name , class: 'form-control' %><br>
+
+  <%= f.label :last_name, "Last Name" %>
+  <%= f.text_field :last_name , class: 'form-control' %><br>
+
+  <%= f.label :role, "Role" %>
+  <%= f.select :role, options_for_select(['Admin', 'Employee'], @user.role), class: 'form-control' %><br>
+
+  <%= f.label :email, "Email" %>
+  <%= f.email_field :email, class: 'form-control' %><br>
+
+  <%= f.label :username, "Username" %>
+  <%= f.text_field :username , class: 'form-control' %><br>
+
+  <%= f.label :website_code, "Website Code" %>
+  <br>
+  <small>(Code used to unlock repair request form.)</small>
+  <br>
+  <%= f.password_field :website_code , class: 'form-control' %><br>
+
+  <%= f.label :password, "Account Password" %>
+  <%= f.password_field :password , class: 'form-control' %><br>
+
+  <%= f.label :password_confirmation, "Confirm Account Password" %>
+  <%= f.password_field :password_confirmation , class: 'form-control' %><br>
+
+  <%= f.submit "Create new user", class: "btn btn-primary" %>
+<% end %>
