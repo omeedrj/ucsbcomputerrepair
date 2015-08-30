@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users
+
 
 
   # Example resource route with options:
