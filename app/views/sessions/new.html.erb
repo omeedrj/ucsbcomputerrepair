@@ -1,0 +1,25 @@
+<h1>Employee Log In</h1>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-10">
+  	
+
+	<font color = "ff0000"> <p id="notice"><%= flash[:incorrect] %></p> </font>	
+
+    <%= form_for(:session, url: login_path) do |f| %>
+
+      <%= f.label :username %>
+      <%= f.text_field :username, class: 'form-control' %>
+  	  
+  		<br>
+	
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <br>
+
+			<%= f.submit "Login", class: "btn btn-primary" %>
+		<% end %>
+	
+  </div>
+</div>

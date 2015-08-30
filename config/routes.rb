@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -26,7 +31,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users
+  resources :users do
+    member do
+      get 'admin_edit_employee'
+      put 'admin_update_employee'
+      patch 'admin_update_employee'
+    end
+  end
 
 
 

@@ -1,12 +1,35 @@
 <h1>Users</h1>
+<%= link_to	"Edit My Settings", edit_user_path(current_user), class: "btn btn-default" %>
 
-<% @users.each do |user| %>
+<% if admin_logged_in? %>
+	<%= link_to	"Create New User", new_user_path, class: "btn btn-default" %>
+<% end %>
+
+<br>
+<br>
+
+<b>Admins</b>
+<% @users.where(:role => 0).each do |user| %>
 	<p>
 		<%= user.id%>
 		<%= user.first_name %>
 		<%= user.last_name %>
-		<%= user.role %>
 		<%= user.email %>
 		<%= user.username %>
+	</p>
+<% end %>
+
+<b>Employees</b>
+<% @users.where(:role => 1).each do |user| %>
+	<p>
+		<%= user.id%>
+		<%= user.first_name %>
+		<%= user.last_name %>
+		<%= user.email %>
+		<%= user.username %>
+
+		<% if admin_logged_in? && user.role == "Employee" %>
+			<%= link_to "Edit Settings", admin_edit_employee_user_path(user), class: "btn btn-default" %>
+		<% end %>
 	</p>
 <% end %>

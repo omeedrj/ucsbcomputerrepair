@@ -1,5 +1,5 @@
 class RepairsController < ApplicationController
-	http_basic_authenticate_with name: "bookstore", password: "computers"
+	before_filter :login_required, :except => [:new, :create]
 
 	def index
 		redirect_to active_repairs_path
@@ -65,5 +65,9 @@ class RepairsController < ApplicationController
 										   :accessories_description, :device_problem_description,
 										   :repair_description, :services_fee,
 										   :parts_fee, :state, :device_password_confirmation )
+		end
+
+		def login_required
+			redirect_to login_path unless logged_in?
 		end
 end
