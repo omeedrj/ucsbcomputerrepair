@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-	#before_filter :login_required
-	#before_filter :admin_approval, :only => [:new, :create, :admin_edit_employee]
-	http_basic_authenticate_with name: "omeed", password: "secret"
+	before_filter :login_required
+	before_filter :admin_approval, :only => [:new, :create, :admin_edit_employee]
 
 	def index
 		@users = User.all
