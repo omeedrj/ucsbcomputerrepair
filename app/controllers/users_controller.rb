@@ -30,9 +30,9 @@ end
 def admin_edit_employee
 	if User.exists?(params[:id])
 		@user = User.find(params[:id])
-		if current_user.role == "Head_Admin"
+		if current_user.role == "Top_Admin"
 			@user
-		elsif @user.role == "Admin" || @user.role == "Head_Admin"
+		elsif @user.role == "Admin" || @user.role == "Top_Admin"
 			redirect_to users_path
 		else
 			@user
