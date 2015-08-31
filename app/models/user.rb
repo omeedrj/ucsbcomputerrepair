@@ -14,5 +14,5 @@ class User < ActiveRecord::Base
     validates :password, presence: true, length: { minimum: 5 }, confirmation: true, on: :create
 		validates :password, length: { minimum: 5 }, confirmation: true, on: :update, allow_blank: true
 
-	enum role: [ :Admin, :Employee ]
+	enum role: [ :Admin, :Employee, :Top_Admin ]
 end
