@@ -23,8 +23,10 @@
   <%= f.label :role, "Role" %>
   <% if current_user.role == "Top_Admin" %>
     <%= f.select :role, options_for_select(['Admin', 'Employee', 'Top_Admin'], @user.role), class: 'form-control' %><br>
-  <% else %>
+  <% elsif current_user.role == "Admin" %>
     <%= f.select :role, options_for_select(['Admin', 'Employee'], @user.role), class: 'form-control' %><br>
+  <% else %>
+    <%= f.select :role, options_for_select(['Employee'], @user.role), class: 'form-control' %><br>
   <% end %>
 
   <%= f.label :email, "Email" %>

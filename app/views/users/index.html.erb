@@ -15,7 +15,7 @@
 			<th>Email</th>
 			<th>Username</th>
 		<% @users.where(:role => [0, 2]).each do |user| %>
-			<% if current_user.role == "Top_Admin" && user.role != "Top_Admin" %>
+			<% if current_user.role == "Top_Admin" && user.role == "Admin" %>
 				<tr data-link="<%= admin_edit_employee_user_path(user) %>">
 			<% else %>
 				<tr>
