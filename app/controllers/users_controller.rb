@@ -6,10 +6,6 @@ before_filter :login_required
 		@users = User.all
 	end
 
-	def show
-		@user = User.find(params[:id]) if User.exists?(params[:id])
-	end
-
 	def new
 		@user = User.new
 	end
