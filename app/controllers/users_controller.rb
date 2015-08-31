@@ -48,7 +48,7 @@ def update
 	if !params[:current_password].nil? && !params[:current_password].empty? 
 		if User.find(params[:id]).authenticate(params[:current_password])
 			if @user.update(user_params)
-					redirect_to users_path
+				redirect_to users_path
 			else
 				render 'edit'
 			end

@@ -21,7 +21,7 @@
   <%= password_field_tag :current_password, params[:current_password], placeholder: "Old Account Password", class: 'form-control' %><br>  
 
   <%= f.label :role, "Role" %>
-  <%= f.select :role, options_for_select(['Admin', 'Employee', 'Head_Admin'], @user.role), class: 'form-control' %><br>
+  <%= f.select :role, options_for_select(['Admin', 'Employee', 'Top_Admin'], @user.role), class: 'form-control' %><br>
 
   <%= f.label :email, "Email" %>
   <%= f.email_field :email, class: 'form-control' %><br>
