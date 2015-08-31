@@ -7,9 +7,13 @@
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
+
+<% if logged_in? %>
 <div class="container">
 	<h6 class="pull-right">Logged in as: <%= current_user.first_name %> <%= current_user.last_name %></h6>
 </div>
+<% end %>
+
 <div id="Application_main_container" class="container-fluid">
 	<% if logged_in? %>
 		<h3>
