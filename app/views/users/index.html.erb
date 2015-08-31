@@ -8,28 +8,43 @@
 <br>
 <br>
 
-<b>Admins</b>
-<% @users.where(:role => 0).each do |user| %>
-	<p>
-		<%= user.id%>
-		<%= user.first_name %>
-		<%= user.last_name %>
-		<%= user.email %>
-		<%= user.username %>
-	</p>
-<% end %>
-
-<b>Employees</b>
-<% @users.where(:role => 1).each do |user| %>
-	<p>
-		<%= user.id%>
-		<%= user.first_name %>
-		<%= user.last_name %>
-		<%= user.email %>
-		<%= user.username %>
-
-		<% if admin_logged_in? && user.role == "Employee" %>
-			<%= link_to "Edit Settings", admin_edit_employee_user_path(user), class: "btn btn-default" %>
+<div class="panel panel-default">
+	<div class="panel-heading"><strong>Admin</strong></div>
+	<table class="table table-hover">
+			<th>Name</th>
+			<th>Email</th>
+			<th>Username</th>
+		<% @users.where(:role => 0).each do |user| %>
+			<tr>
+				<td> <%= user.first_name %> <%= user.last_name %></td>
+				<td> <%= user.email %> </td>
+				<td> <%= user.username %> </td>
+			</tr>
 		<% end %>
-	</p>
-<% end %>
+	</table>
+</div>
+
+<div class="panel panel-default">
+	<% if admin_logged_in? %>
+		<div class="panel-heading"><strong>Employees</strong> (click on row to edit employee settings)</div>
+	<% else %>
+		<div class="panel-heading"><strong>Employees</strong></div>
+	<% end %>
+	<table class="table table-hover">
+			<th>Name</th>
+			<th>Email</th>
+			<th>Username</th>
+		<% @users.where(:role => 1).each do |user| %>
+			<% if admin_logged_in? %>
+				<tr data-link="<%= admin_edit_employee_user_path(user) %>">
+			<% else %>
+				<tr>
+			<% end %>
+				<td> <%= user.first_name %> <%= user.last_name %></td>
+				<td> <%= user.email %> </td>
+				<td> <%= user.username %> </td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+

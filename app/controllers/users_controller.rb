@@ -13,7 +13,7 @@ before_filter :login_required
 	def create
 		@user = User.new(user_params)
 		if @user.save
-				redirect_to @user
+				redirect_to users_path
 			else 
 				render 'new'
 		end
@@ -46,7 +46,7 @@ before_filter :login_required
 		if !params[:current_password].nil? && !params[:current_password].empty? 
 			if User.find(params[:id]).authenticate(params[:current_password])
 				if @user.update(user_params)
-						redirect_to @user
+						redirect_to users_path
 				else
 					render 'edit'
 				end
@@ -57,13 +57,13 @@ before_filter :login_required
 		else
 			if @user.id != current_user.id && admin_logged_in?
 				if @user.update(user_params)
-					redirect_to @user
+					redirect_to users_path
 				else
 					render 'admin_edit_employee'
 				end
 			else
 				if @user.update(user_params_no_passwords_or_email_or_role)
-					redirect_to @user
+					redirect_to users_path
 				else
 					render 'edit'
 				end
@@ -92,7 +92,7 @@ before_filter :login_required
 		end
 
 		def admin_approval
-			redirect_to active_users_path unless admin_logged_in?
+			redirect_to users_path unless admin_logged_in?
 		end
 
 end

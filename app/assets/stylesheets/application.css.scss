@@ -18,10 +18,11 @@ $panel-default-heading-bg: #D9D9D9;
 $navbar-default-bg: #0033FF;
 
 // Remove this later
-tr:hover
-{
-	cursor: pointer;
-}
+.table:hover tr:hover
+	{
+		cursor: pointer;
+	}
+
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
