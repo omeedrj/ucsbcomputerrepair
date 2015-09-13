@@ -69,10 +69,10 @@
 
 <%= render 'repair_info' %>
 
-
-<h5> Customer Dropoff Signature </h5>
 <% if @repair.dropoff_signature_data %>
-	<div>
+	<button id= "view_dropoff_signature_button" type="button" class="btn btn-default pull-left">View Customer Dropoff Signature</button>
+	<br>
+	<div id="customer_dropoff_signature" style="display: none;">
 	 	<%=	@repair.dropoff_signature_data.html_safe %>
  	</div>
 <%	end %>
