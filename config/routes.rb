@@ -26,6 +26,8 @@ Rails.application.routes.draw do
       put 'change_status'
     end
     collection do
+      get 'unlock_new'
+      post 'unlock_new'
       get 'active'
       get 'inactive'
     end
@@ -34,8 +36,8 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get 'admin_edit_employee'
-      put 'admin_update_employee'
-      patch 'admin_update_employee'
+      # put 'admin_update_employee'
+      # patch 'admin_update_employee'
     end
   end
 

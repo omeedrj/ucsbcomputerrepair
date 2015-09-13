@@ -4,4 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
   include UsersHelper
+
+  before_filter :delete_unlock_new_session_name
+
+  private
+  	def delete_unlock_new_session_name
+			session.delete(:unlock_new_repair_employee_name)
+		end
 end

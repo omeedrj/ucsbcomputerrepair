@@ -1,2 +1,11 @@
 <h1>Home Page</h1>
-<p>Example Text</p>
+
+<% if flash[:success] %>
+  <div class="row">
+    <div class="col-xs-10 col-sm-6 col-md-4">
+      <div class="alert alert-success" role="alert">
+        <%= flash[:success] %>  
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,26 @@
+<% if flash[:error] %>
+  <div class="row">
+    <div class="col-xs-10 col-sm-6 col-md-4">
+      <div class="alert alert-danger" role="alert">
+        <%= flash[:error] %>  
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= form_tag 'unlock_new' do |f| %>
+  
+  <h4>Unlock Repair Request Form</h4>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-5 col-md-5">
+      <%= label_tag :employee_unlock_code, 'Employee Unlock Code' %>
+      <br>
+      <%= password_field_tag 'employee_unlock_code' %>
+      <br>
+      <br>
+      <%= submit_tag 'Unlock', class: "btn btn-primary"%>
+    </div>
+  </div>
+
+<% end %>

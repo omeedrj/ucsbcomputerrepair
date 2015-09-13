@@ -65,11 +65,15 @@
 
 <hr>
 
+<h4> Sales Associate: <%= @repair.sales_associate %> </h4>
+
 <%= render 'repair_info' %>
 
 <hr>
 
 <p> <%= link_to 'Update Repair Info', edit_repair_path(@repair), class: "btn btn-primary" %> <p>
+
+<h4>Technician: <%= @repair.technician %></h4>
 
 <div class="row">
 	<div class="col-xs-12 col-sm-6 col-md-6">
