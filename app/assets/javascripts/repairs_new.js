@@ -1,11 +1,6 @@
 $(document).ready(function(){
 	var $sigdiv = $("#signature");
-	if ($sigdiv.jSignature()) {
-		console.log("jSignature initialized.");
-	}
-	else {
-		console.log("jSignature did not initialize.");
-	}
+	$sigdiv.jSignature();
 
 	$("#reset_signature_button").click(function(){
 		$sigdiv.jSignature("reset");
