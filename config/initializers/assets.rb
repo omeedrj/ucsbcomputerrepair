@@ -12,5 +12,6 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( repairs_edit.js )
 Rails.application.config.assets.precompile += %w( repairs_new.js )
 Rails.application.config.assets.precompile += %w( repairs_active_inactive.js )
+Rails.application.config.assets.precompile += %w( repairs_show.js )
 Rails.application.config.assets.precompile += %w( flashcanvas.js )
 Rails.application.config.assets.precompile += %w( jSignature.min.js )
