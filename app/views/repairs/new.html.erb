@@ -108,14 +108,17 @@
   </div>
   
   <%= f.hidden_field :sales_associate, :value => session[:unlock_new_repair_employee_name] %>
-
+  <%= f.hidden_field :dropoff_signature_data %> <!-- DOM id is "repair_dropoff_signature_data" --> 
   <br>
 
   <div class="row">
     <div class="col-xs-10 col-sm-6 col-md-8">
-      By pressing "Submit Repair Request" I hereby acknowledge the release of my machine to the UCSB Bookstore, and that the UCSB Bookstore is not liable for data loss when servicing my machine. I have been informed to back up data before submitting my machine.
+      By electronically signing below, I hereby acknowledge the release of my machine to the UCSB Bookstore, and that the UCSB Bookstore is not liable for data loss when servicing my machine. I have been informed to back up data before submitting my machine.
     </div>
   </div>
+
+  <button id= "reset_signature_button" type="button" class="btn btn-default center-block">Reset Signature</button>
+  <div id="signature" style="background:white"></div>
   
   <br>
 
@@ -125,3 +128,9 @@
  
 
 <% end %>
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="app/assets/javascripts/jSignature/flashcanvas.js"></script>
+<![endif]-->
+
+<%= javascript_include_tag "jSignature/jSignature.min" %>

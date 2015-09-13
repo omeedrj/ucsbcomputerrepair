@@ -10,4 +10,7 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( repairs_edit.js )
+Rails.application.config.assets.precompile += %w( repairs_new.js )
 Rails.application.config.assets.precompile += %w( repairs_active_inactive.js )
+Rails.application.config.assets.precompile += %w( jSignature/flashcanvas.js )
+Rails.application.config.assets.precompile += %w( jSignature/jSignature.min.js )

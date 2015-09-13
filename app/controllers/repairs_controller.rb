@@ -86,7 +86,8 @@ class RepairsController < ApplicationController
 										   :accessories_description, :device_problem_description,
 										   :repair_description, :services_fee,
 										   :parts_fee, :state, :device_password_confirmation,
-										   :sales_associate, :technician )
+										   :sales_associate, :technician, :dropoff_signature_data,
+										   :pickup_signature_data )
 		end
 
 		def login_required
