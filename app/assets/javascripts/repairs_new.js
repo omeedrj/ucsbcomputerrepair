@@ -1,4 +1,7 @@
 $(document).ready(function(){
+	$("#signature_parent_div").css("height", "290px");
+	$("#signature_parent_div").css("width", "90%");
+
 	var $sigdiv = $("#signature")
 	$sigdiv.jSignature()
 
