@@ -16,6 +16,14 @@ class RepairsController < ApplicationController
 
 	def show
 		@repair = Repair.find(params[:id])
+
+		respond_to do |format|
+			format.html
+			format.pdf do
+				pdf = RepairPdf.new(@repair)
+				send_data pdf.render, filename: "repair-ID##{@repair.id}-#{@repair.customer_first_name}_#{@repair.customer_last_name}.pdf", type: 'application/pdf'
+			end
+		end
 	end
 
 	def new
