@@ -4,133 +4,213 @@
   
   <%= render 'shared/error_messages_repair' %>
   
-  <div class="row" >
-    <div class="col-xs-12 col-sm-3 col-md-3">
-      <%= f.label :customer_first_name, "First Name" %> 
-      <br>
-      <%= f.text_field :customer_first_name, class: "form-control" %>
-    </div>  
-    <div class="col-xs-12 col-sm-3 col-md-3">
-      <%= f.label :customer_last_name, "Last Name" %>
-      <br>
-      <%= f.text_field :customer_last_name, class: "form-control" %>
+  <div id="step_1_div">
+    <div class="row" >
+      <div class="col-xs-12 col-sm-3 col-md-3">
+        <%= f.label :customer_first_name, "First Name" %> 
+        <br>
+        <%= f.text_field :customer_first_name, class: "form-control" %>
+      </div>  
+      <div class="col-xs-12 col-sm-3 col-md-3">
+        <%= f.label :customer_last_name, "Last Name" %>
+        <br>
+        <%= f.text_field :customer_last_name, class: "form-control" %>
+      </div>
+        
+      <div class="col-xs-12 col-sm-3 col-md-2">
+        <%= f.label :customer_id_number, "UCSB Perm/ID #" %>
+        <br>
+        <%= f.text_field :customer_id_number, class: "form-control" %>
+      </div>
     </div>
-      
-    <div class="col-xs-12 col-sm-3 col-md-2">
-      <%= f.label :customer_id_number, "UCSB Perm/ID #" %>
-      <br>
-      <%= f.text_field :customer_id_number, class: "form-control" %>
+
+    <br>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <p>
+          <%= f.label :customer_email, "Email" %>
+          <small>(You will be sent updates regarding your repair.)</small>
+          <br>
+          <%= f.email_field :customer_email, class: "form-control" %>
+        </p>  
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <p>
+          <%= f.label :customer_phone_number, "Phone Number" %> 
+          <small>(Format: 555-555-5555)</small>
+          <br>
+          <%= f.text_field :customer_phone_number, class: "form-control" %>
+        </p>
+      </div>
     </div>
+
+    <button id="step_2_button" type="button" class="btn btn-default center-block">Continue</button>
+  </div>
+  
+  <br>
+  
+  <div id="step_2_div" style="display: none">
+    <h4 id="refer_back_to_associate">Please refer back to the sales associate.</h4>
+    <br>
+    <button id="step_3_button" type="button" class="btn btn-default center-block">Move on to the device</button>
+  </div>
+  
+  <div id="step_3_div" style="display: none">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= f.label :device_description, "Device Description" %> 
+        <small>(Please be as descriptive as possible.)</small>
+        <br>
+        <small>(I.e. brand, model, color, screen size, specific stickers, etc.)</small>
+        <br>
+        <small>(Ex: Apple Retina Macbook Pro, 13" screen. Blue UCSB sticker on top.)</small>
+        <br>
+        <%= f.text_area :device_description, class: "form-control", rows: 3 %>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <%= f.label :device_password, "Device Password" %>
+        <br>
+        <small>(Leave blank if there is no password.)</small>
+        <br>
+        <%= f.password_field :device_password, class: "form-control" %>
+        
+        <br>
+
+        <%= f.label :device_password_confirmation, "Confirm Device Password" %>
+        <%= f.password_field :device_password_confirmation, class: "form-control" %>
+      </div>
+    </div>
+    
+    <br>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= f.label :device_serial_number, "Device Serial Number" %>
+        <br>
+        <%= f.text_field :device_serial_number, class: "form-control" %>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= f.label :accessories_description, "Accessories" %>
+        <small>(Ex: Apple charger, black carrying case, Samsung external hard drive, 16 GB USB, etc.)</small>
+        <br>
+        <%= f.text_area :accessories_description, class: "form-control" %>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <%= f.label :device_problem_description, "Problem(s) Description" %>
+        <small>(Please be as detailed as possible)</small>
+        <br>
+        <small>(Ex: problematic symptoms, how to recreate the problem(s), possible damage to the device, what needs to be fixed, etc.)</small>
+        <br>
+        <%= f.text_area :device_problem_description, class: "form-control", rows: 4 %>
+      </div>
+    </div>
+    <br>
+
+    <button id="step_4_button" type="button" class="btn btn-default center-block">Review Details</button>
+
   </div>
 
-  <br>
+  <%= f.hidden_field :sales_associate, :value => session[:unlock_new_repair_employee_name] %>
 
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <p>
-        <%= f.label :customer_email, "Email" %>
-        <small>(You will be sent updates regarding your repair.)</small>
-        <br>
-        <%= f.email_field :customer_email, class: "form-control" %>
-      </p>  
+  <br>
+  
+  <div id="step_4_div" style="display: none">
+    
+    <!-- add all the previous values to be shown here-->
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-md-4">
+        <strong>First Name: </strong>
+        <div id="review_customer_first_name"></div>
+      </div>
+
+      <div class="col-xs-12 col-sm-4 col-md-4">
+        <strong>Last Name: </strong>
+        <div id="review_customer_last_name"></div>
+      </div>
+
+      <div class="col-xs-12 col-sm-4 col-md-4">
+        <strong>ID Number: </strong>
+        <div id="review_customer_id_number"></div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <strong>Email: </strong>
+        <div id="review_customer_email"></div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <strong>Phone Number: </strong>
+        <div id="review_customer_phone_number"></div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <strong>Device Description: </strong>
+        <div id="review_device_description"></div>
+      </div>
+
+      <div class="col-xs-12 col-sm-4 col-md-4">
+        <strong>Serial Number: </strong>
+        <div id="review_device_serial_number"></div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <strong>Accessories Description: </strong>
+        <div id="review_accessories_description"></div>
+      </div>
+
+      <div class="col-xs-12 col-sm-8 col-md-8">
+        <strong>Problem Description: </strong>
+        <div id="review_device_problem_description"></div>
+      </div>
+    </div>
+    
+    <br>
+
+    <div class="row">
+      <div class="col-xs-10 col-sm-6 col-md-8">
+        By electronically signing below, I hereby agree to the following statements
+        <ul>
+          <li>I verify that all of the given information above is correct.</li>
+          <li>I have been informed to back up data before submitting my machine.</li>          
+          <li>I hereby acknowledge the release of my machine to the UCSB Bookstore, and that the UCSB Bookstore is not liable for data loss when servicing my machine.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <br>
+
+    <div class="row">
+      <p>Date: <%= time_tag Date.today %></p>
     </div>
 
-    <div class="col-xs-12 col-sm-6 col-md-3">
+    <br>
+    <div class="row">
+      <button id="reset_signature_button" type="button" class="btn btn-default center-block">Reset Signature</button>
+      <div id="signature_parent_div" style="height: 250px; width: 90%;">
+        <div id="signature" style="background:white; "></div>
+      </div>
+    </div>
+    <%= f.hidden_field :dropoff_signature_data %> <!-- DOM id is "repair_dropoff_signature_data" --> 
+    <br>
+
+    <div id="submit_button_div" style="display: none;">
       <p>
-        <%= f.label :customer_phone_number, "Phone Number" %> 
-        <small>(Format: 555-555-5555)</small>
-        <br>
-        <%= f.text_field :customer_phone_number, class: "form-control" %>
+        <%= f.submit "Submit Repair Request", class: "btn btn-success"%>
       </p>
     </div>
-  </div>
-  
-  <br>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <%= f.label :device_description, "Device Description" %> 
-      <small>(Please be as descriptive as possible.)</small>
-      <br>
-      <small>(I.e. brand, model, color, screen size, specific stickers, etc.)</small>
-      <br>
-      <small>(Ex: Apple Retina Macbook Pro, 13" screen. Blue UCSB sticker on top.)</small>
-      <br>
-      <%= f.text_area :device_description, class: "form-control", rows: 3 %>
-    </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-3">
-      <%= f.label :device_password, "Device Password" %>
-      <br>
-      <small>(Leave blank if there is no password.)</small>
-      <br>
-      <%= f.password_field :device_password, class: "form-control" %>
-      
-      <br>
-
-      <%= f.label :device_password_confirmation, "Confirm Device Password" %>
-      <%= f.password_field :device_password_confirmation, class: "form-control" %>
-    </div>
-  </div>
-  
-  <br>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <%= f.label :device_serial_number, "Device Serial Number" %>
-      <br>
-      <%= f.text_field :device_serial_number, class: "form-control" %>
-    </div>
-  </div>
-
-  <br>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <%= f.label :accessories_description, "Accessories" %>
-      <small>(Ex: Apple charger, black carrying case, Samsung external hard drive, 16 GB USB, etc.)</small>
-      <br>
-      <%= f.text_area :accessories_description, class: "form-control" %>
-    </div>
-  </div>
-
-  <br>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-6">
-      <%= f.label :device_problem_description, "Problem(s) Description" %>
-      <small>(Please be as detailed as possible)</small>
-      <br>
-      <small>(Ex: problematic symptoms, how to recreate the problem(s), possible damage to the device, what needs to be fixed, etc.)</small>
-      <br>
-      <%= f.text_area :device_problem_description, class: "form-control", rows: 4 %>
-    </div>
-  </div>
-  
-  <%= f.hidden_field :sales_associate, :value => session[:unlock_new_repair_employee_name] %>
-  <%= f.hidden_field :dropoff_signature_data %> <!-- DOM id is "repair_dropoff_signature_data" --> 
-  <br>
-
-  <div class="row">
-    <div class="col-xs-10 col-sm-6 col-md-8">
-      By electronically signing below, I hereby acknowledge the release of my machine to the UCSB Bookstore, and that the UCSB Bookstore is not liable for data loss when servicing my machine. I have been informed to back up data before submitting my machine.
-    </div>
-  </div>
-  
-  <br>
-  <div class="row">
-    <button id= "reset_signature_button" type="button" class="btn btn-default center-block">Reset Signature</button>
-    <div id="signature_parent_div" style="height: 290px; width: 90%;">
-      <div id="signature" style="background:white;"></div>
-    </div>
-  </div>
-  
-  <br>
-
-  <div id="submit_button_div" style="display: none;">
-    <p>
-      <%= f.submit "Submit Repair Request", class: "btn btn-success"%>
-    </p>
   </div>
  
 
@@ -141,5 +221,5 @@
 <![endif]-->
 
 
-<%= javascript_include_tag "jSignature.min" %>
+
 <%= javascript_include_tag "repairs_new" %>
