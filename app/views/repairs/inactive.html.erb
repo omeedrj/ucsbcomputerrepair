@@ -5,6 +5,26 @@
 
 <br>
 
+<%= form_for inactive_repairs_path, method: :get do |f| %>
+	<div class="row">
+		<div class="col-xs-11 col-sm-5 col-md-5">
+	    <%= text_field_tag :search, params[:search], class: "form-control" %>
+	  </div>
+	  <div class="col-xs-3 col-sm-2 col-md-1">
+			Find by
+		</div>
+		<div class="col-xs-4 col-sm-2 col-md-2">
+	  	<%= select_tag :option, options_for_select(['First Name', 'Last Name', 'ID Number', 'Email', 'Phone Number', 'Device Description', 'Problem Description', 'Serial Number', 'Accessories', 'Repair Description', 'Technician', 'Sales Associate']), :include_blank => true, class: "form-control" %>
+	  </div>
+
+	  <div class="col-xs-12 col-sm-3 col-md-3">
+	    <%= submit_tag "Search", :name => nil, class: "btn btn-primary"  %>
+	  </div>
+	</div>  
+<% end %>
+
+<br>
+
 <div class="panel panel-info">
 	<div class="panel-heading"><strong>Inactive</strong></div>
 	<table class="table table-hover">
