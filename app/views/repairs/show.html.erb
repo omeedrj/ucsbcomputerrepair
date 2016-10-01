@@ -47,19 +47,18 @@
 	</div>
 <% end %>	  
 
-
 <% if state == 0 %> 
 	<%= link_to 'Ready for pickup', change_status_repair_path(@repair, state: 'ready_for_pickup'), method: :put, class: "btn btn-success", 
-																	data: {confirm: 'Ensure that the repair description and fees are correct.'} %>
+																	data: {confirm: 'Ensure that the repair description and fees are correct.'}, disabled: viewOnlyAccount? %>
 	<%= link_to 'Computer was picked up', change_status_repair_path(@repair, state: 'inactive'), method: :put, class: "btn btn-info",
-																				data: {confirm: 'Ensure that all accessories were also picked up.'} %>
+																				data: {confirm: 'Ensure that all accessories were also picked up.'}, disabled: viewOnlyAccount? %>
 <% elsif state == 1 %>
 	<%= link_to 'Computer was picked up', change_status_repair_path(@repair, :state => 'inactive'), method: :put, class: "btn btn-info",
-																	  		data: {confirm: 'Ensure that all accessories were also picked up.'} %>
-	<%= link_to 'Make Active Again', change_status_repair_path(@repair, :state => 'active'), method: :put, class: "btn btn-danger pull-right" %>
+																	  		data: {confirm: 'Ensure that all accessories were also picked up.'}, disabled: viewOnlyAccount? %>
+	<%= link_to 'Make Active Again', change_status_repair_path(@repair, :state => 'active'), method: :put, class: "btn btn-danger pull-right", disabled: viewOnlyAccount? %>
 <% elsif %>
-	<%= link_to 'Change to "Ready for Pickup"', change_status_repair_path(@repair, :state => 'ready_for_pickup'), method: :put, class: "btn btn-success" %>
-	<%= link_to 'Make Active Again', change_status_repair_path(@repair, :state => 'active'), method: :put, class: "btn btn-danger pull-right" %>
+	<%= link_to 'Change to "Ready for Pickup"', change_status_repair_path(@repair, :state => 'ready_for_pickup'), method: :put, class: "btn btn-success", disabled: viewOnlyAccount? %>
+	<%= link_to 'Make Active Again', change_status_repair_path(@repair, :state => 'active'), method: :put, class: "btn btn-danger pull-right", disabled: viewOnlyAccount? %>
 	
 <% end %>
 

@@ -45,5 +45,5 @@
   <%= f.label :password_confirmation, "Confirm Account Password" %>
   <%= f.password_field :password_confirmation , class: 'form-control' %><br>
 
-  <%= f.submit "Save settings", class: "btn btn-primary" %>
+  <%= f.submit "Save settings", class: "btn btn-primary", disabled: viewOnlyAccount? %>
 <% end %>

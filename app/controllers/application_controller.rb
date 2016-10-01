@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
   	def delete_unlock_new_session_name
 			session.delete(:unlock_new_repair_employee_name)
 		end
+
+    def redirectForViewOnlyAccount
+      redirect_to :back if viewOnlyAccount?
+    end
 end

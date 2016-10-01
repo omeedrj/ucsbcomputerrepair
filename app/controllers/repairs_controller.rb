@@ -1,5 +1,6 @@
 class RepairsController < ApplicationController
 	before_filter :login_required, :except => [:new, :create, :unlock_new, :unlock_new_form]
+	before_filter :redirectForViewOnlyAccount, only: [:update, :destroy, :change_status]
 	skip_before_filter :delete_unlock_new_session_name, :only => [:new]
 
 	def index

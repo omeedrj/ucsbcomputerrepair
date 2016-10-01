@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 before_filter :login_required
 before_filter :admin_approval, :only => [:new, :create, :admin_edit_employee]
+before_filter :redirectForViewOnlyAccount, only: [:update, :destroy]
 
 def index
 	@users = User.all
