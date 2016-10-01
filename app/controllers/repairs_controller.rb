@@ -1,5 +1,5 @@
 class RepairsController < ApplicationController
-	before_filter :login_required, :except => [:new, :create, :unlock_new, :unlock_new_form]
+	before_filter :login_required, :except => [:new, :create, :unlock_new, :unlock_new_form, :newViewOnlyRepairForm]
 	before_filter :redirectForViewOnlyAccount, only: [:update, :destroy, :change_status]
 	skip_before_filter :delete_unlock_new_session_name, :only => [:new]
 
@@ -36,14 +36,12 @@ class RepairsController < ApplicationController
 	end
 	
 	def unlock_new
-		if request.get?
-			# Just render view
-		elsif request.post?
+		if request.post?
 			employee_unlock_code = params[:employee_unlock_code]
-			@user = User.find_by_website_code(employee_unlock_code)
+			@user = User.find_by(website_code: employee_unlock_code)
 			if @user
 				session[:unlock_new_repair_employee_name] = @user.first_name + " " + @user.last_name
-				puts session[:unlock_new_repair_employee_name]
+				session[:view_only_mode] = false
 				redirect_to new_repair_path
 			else
 				flash[:error] = "Incorrect Employee Unlock Code"
@@ -52,13 +50,26 @@ class RepairsController < ApplicationController
 		end
 	end
 
+	def newViewOnlyRepairForm
+		user = User.find_by(username: "ExampleViewOnlyAccount")
+		employee_unlock_code = user.website_code if user
+		if employee_unlock_code
+			session[:unlock_new_repair_employee_name] = user.first_name + " " + user.last_name
+			session[:view_only_mode] = true
+			redirect_to new_repair_path
+		else
+			flash[:error] = "Repair Request View Only Form Not Available"
+			render unlock_new_repairs_path
+		end
+	end
+
 	def create
 		@repair = Repair.new(repair_params)
-		if @repair.save
-				flash[:success] = "Thank you for submitting your repair request."
-				redirect_to root_url
-			else 
-				render 'new'
+		if @repair.save && !session[:view_only_mode]
+			flash[:success] = "Thank you for submitting your repair request."
+			redirect_to root_url
+		else
+			render 'new'
 		end
 	end
 

@@ -208,7 +208,7 @@
 
     <div id="submit_button_div" style="display: none;">
       <p>
-        <%= f.submit "Submit Repair Request", class: "btn btn-success"%>
+        <%= f.submit "Submit Repair Request", class: "btn btn-success", disabled: session[:view_only_mode] %>
       </p>
     </div>
   </div>

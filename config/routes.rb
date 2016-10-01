@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       get 'inactive'
     end
   end
+  post 'newViewOnlyRepairForm' => 'repairs#newViewOnlyRepairForm'
 
   resources :users do
     member do
