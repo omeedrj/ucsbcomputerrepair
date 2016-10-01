@@ -1,4 +1,4 @@
-<h1>UCSB Bookstore Computers</h1>
+<h1>UCSB Bookstore Computer Repairs</h1>
 
 <% if flash[:success] %>
   <div class="row">
@@ -9,6 +9,23 @@
     </div>
   </div>
 <% end %>
+
+<% if flash[:incorrect] %>
+  <div class="row">
+    <div class="col-xs-10 col-sm-8 col-md-6">
+      <div class="alert alert-danger" role="alert">
+        <%= flash[:incorrect] %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<br>
+<%= button_to "Login with View Only Account", newViewOnlySession_path , { class: "btn btn-primary" } %>
+
+<br>
+<br>
+<p> For more information, please contact <b>omeedrabani@gmail.com</b> <p>
 
 <!--
 <div class="col-xs-6 col-md-3" style="display: block; margin-left: auto; margin-right: auto;">	

@@ -21,4 +21,17 @@ class SessionsController < ApplicationController
   	log_out if logged_in?
   	redirect_to root_url
   end
+
+  def newViewOnlySession
+    user = User.find_by(username: "ExampleViewOnlyAccount")
+    if user
+      log_in user
+      redirect_to active_repairs_path
+    else
+      # TODO: make sure this error message can show up
+      flash.now[:incorrect] = "· View Only Account does not exist"
+
+      redirect_to :back
+    end
+  end
 end
